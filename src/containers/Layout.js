@@ -3,7 +3,7 @@ import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
 import routes from '../routes'
 
 import Sidebar from '../components/Sidebar'
-import Header from '../components/Header'
+import Header from 'components/Header/Header.js'
 import Main from '../containers/Main'
 import ThemedSuspense from '../components/ThemedSuspense'
 import { SidebarContext } from '../context/SidebarContext'
@@ -11,20 +11,20 @@ import { SidebarContext } from '../context/SidebarContext'
 const Page404 = lazy(() => import('../pages/404'))
 
 function Layout() {
-  const { isSidebarOpen, closeSidebar } = useContext(SidebarContext)
+  // const { isSidebarOpen, closeSidebar } = useContext(SidebarContext)
   let location = useLocation()
 
   useEffect(() => {
-    closeSidebar()
+    // closeSidebar()
   }, [location])
 
   return (
     <div
-      className={`flex h-screen bg-gray-50 dark:bg-gray-900 ${isSidebarOpen && 'overflow-hidden'}`}
+      className={`flex h-screen bg-white dark:bg-gray-900`}
     >
-      <Sidebar />
+      {/* <Sidebar /> */}
 
-      <div className="flex flex-col flex-1 w-full">
+      <div className="flex flex-col flex-1 w-full overflow-y-visible">
         <Header />
         <Main>
           <Suspense fallback={<ThemedSuspense />}>
